@@ -1,5 +1,19 @@
-let input = "i am one who knocks"
-let vowels = ['a', 'e', 'i', 'o', 'u']
+
+let submitBtn = document.querySelector(".submit-btn");
+let form = document.querySelector(".translate-form");
+let vowels = ['a', 'e', 'i', 'o', 'u'];
+
+
+form.addEventListener('submit', submit)
+
+function submit(evt){
+    evt.preventDefault();
+    let textbox = document.querySelector("#text-box");
+    let outputbox = document.querySelector("#output-box")
+    outputbox.value = generator(textbox.value, vowels)
+
+    console.log("Submit the form")
+}
 
 function generator(input, vowels){
     let words = input.toLowerCase().split(" ")
@@ -10,7 +24,8 @@ function generator(input, vowels){
             return word = word + "yay";
         }else {
             let i = 0
-            for(i; i < words.split("").length; i++){
+            let chars = word.split("")
+            for(i; i < chars.length; i++){
                 if(vowels.indexOf(chars[i]) != -1)
                     { 
                         break;
@@ -20,8 +35,5 @@ function generator(input, vowels){
         }
     })
     return generatedWords;
+    //TODO: Turn array into a string;
 }
-
-console.log(generator(input, vowels))
-
-
